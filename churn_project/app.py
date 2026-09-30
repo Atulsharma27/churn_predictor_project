@@ -1,6 +1,7 @@
 """Step 3: Streamlit web app. Run with:  streamlit run app.py"""
 import json
 import joblib
+import os
 import pandas as pd
 import streamlit as st
 
@@ -8,7 +9,8 @@ st.set_page_config(page_title="Customer Churn Predictor", page_icon="📊")
 st.title("📊 Customer Churn Predictor")
 st.caption("Random Forest with GridSearchCV hyperparameter tuning | AI Internship Project")
 
-model = joblib.load("outputs/churn_model.joblib")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "outputs", "churn_model.joblib"))
 tab1, tab2 = st.tabs(["Predict", "Model Performance"])
 
 with tab1:
@@ -32,7 +34,7 @@ with tab1:
             st.success(f"✅ Likely to STAY (churn probability {p:.0%})")
 
 with tab2:
-    m = json.load(open("outputs/metrics.json"))
+    m = json.load(open(os.path.join(BASE_DIR, "outputs", "metrics.json")))
     st.subheader("Baseline vs Tuned model")
     st.dataframe(pd.DataFrame({"Baseline": m["baseline"], "Tuned": m["tuned"]}))
     st.write("**Best parameters:**", m["best_params"])
