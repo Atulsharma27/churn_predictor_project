@@ -1,0 +1,19 @@
+{
+  "baseline": {
+    "accuracy": 0.7125,
+    "precision": 0.7393,
+    "recall": 0.7983,
+    "roc_auc": 0.7689
+  },
+  "tuned": {
+    "accuracy": 0.7275,
+    "precision": 0.7279,
+    "recall": 0.8655,
+    "roc_auc": 0.8203
+  },
+  "best_params": {
+    "rf__max_depth": 5,
+    "rf__min_samples_split": 2,
+    "rf__n_estimators": 300
+  }
+}
