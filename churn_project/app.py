@@ -39,5 +39,5 @@ with tab2:
     st.dataframe(pd.DataFrame({"Baseline": m["baseline"], "Tuned": m["tuned"]}))
     st.write("**Best parameters:**", m["best_params"])
     c1, c2 = st.columns(2)
-    c1.image("outputs/confusion_matrix.png")
-    c2.image("outputs/feature_importance.png")
+    c1.image(os.path.join(BASE_DIR, "outputs", "confusion_matrix.png"))
+    c2.image(os.path.join(BASE_DIR, "outputs", "feature_importance.png"))
